@@ -6,15 +6,15 @@ services:
     userns_mode: "host" # run as root!?!?!
     image: certbot/certbot
     volumes:
-      - well-known:./www/well-known
-      - letsencrypt:./letsencrypt
+      - well-known:/root/work/www/well-known
+      - letsencrypt:/root/work/letsencrypt
     command: >-
       certonly --webroot
       -m cert@dougbeal.com
       --agree-tos --non-interactive
-      --webroot-path=./www
-      --work-dir=./work
-      --logs-dir=./
+      --webroot-path=/root/work/www
+      --work-dir=/root/work/work
+      --logs-dir=/root
       --config-dir=./letsencrypt
       -d liw.dougbeal.com -d stage.dougbeal.com -d micro.liw.dougbeal.com
 
