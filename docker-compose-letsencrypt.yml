@@ -1,0 +1,29 @@
+version: '3'
+
+# see .env for shared variabvles
+services:
+  letsencrypt:
+    image: certbot/certbot
+    volumes:
+      - well-known:/var/www/.well-known
+      - letsencrypt:/etc/letsencrypt
+    command: >-
+      certonly --webroot
+      -m cert@dougbeal.com
+      --agree-tos --non-interactive
+      --webroot-path=/var/www
+      -d liw.dougbeal.com -d stage.dougbeal.com -d micro.liw.dougbeal.com
+
+volumes:
+  letsencrypt:
+    driver: local
+    driver_opts:
+      type: none
+      device: ${PWD}/volumes/letsencrypt
+      o: bind
+  well-known:
+    driver: local
+    driver_opts:
+      type: none
+      device: ${PWD}/volumes/well-known
+      o: bind
