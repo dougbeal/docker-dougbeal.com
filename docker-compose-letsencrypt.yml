@@ -3,6 +3,7 @@ version: '3'
 # see .env for shared variabvles
 services:
   letsencrypt:
+    userns_mode: "host" # run as root!?!?!
     image: certbot/certbot
     volumes:
       - well-known:./www/well-known
