@@ -3,7 +3,7 @@ version: '3'
 # see .env for shared variabvles
 services:
   database:
-    user: dockerrun # match user on host
+    user: root:dockerrun # map to user on host
     image: mariadb:5.5
     volumes:
       - database:/var/lib/mysql
