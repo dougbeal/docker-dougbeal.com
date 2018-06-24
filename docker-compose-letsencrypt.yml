@@ -5,13 +5,16 @@ services:
   letsencrypt:
     image: certbot/certbot
     volumes:
-      - well-known:/var/www/.well-known
-      - letsencrypt:/etc/letsencrypt
+      - well-known:./www/well-known
+      - letsencrypt:./letsencrypt
     command: >-
       certonly --webroot
       -m cert@dougbeal.com
       --agree-tos --non-interactive
-      --webroot-path=/var/www
+      --webroot-path=./www
+      --work-dir=./work
+      --logs-dir=./
+      --config-dir=./letsencrypt
       -d liw.dougbeal.com -d stage.dougbeal.com -d micro.liw.dougbeal.com
 
 volumes:
