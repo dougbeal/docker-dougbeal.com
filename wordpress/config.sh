@@ -22,7 +22,7 @@ file_env() {
 	export "$var"="$val"
 	unset "$fileVar"
 }
-
+echo "args $0"
 if [[ "$1" == apache2* ]] || [ "$1" == php-fpm ]; then
 	if ! [ -e index.php -a -e wp-includes/version.php ]; then
 		echo >&2 "WordPress not found in $PWD - copying now..."
