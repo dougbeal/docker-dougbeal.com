@@ -11,13 +11,13 @@ services:
       certonly --verbose --webroot
       --staging --debug-challenges
       -m cert@dougbeal.com
-      --agree-tos --non-interactive
       --webroot-path=/root/work/www
       --work-dir=/root/work/work
       --logs-dir=/root
       --config-dir=./letsencrypt
       -d stage.dougbeal.com
-
+      
+#      --agree-tos --non-interactive
 volumes:
   letsencrypt:
     driver: local
