@@ -16,7 +16,7 @@ services:
       --work-dir=/root/work/work
       --logs-dir=/root
       --config-dir=./letsencrypt
-      -d liw.dougbeal.com -d stage.dougbeal.com -d micro.liw.dougbeal.com
+      -d stage.dougbeal.com
 
 volumes:
   letsencrypt:
