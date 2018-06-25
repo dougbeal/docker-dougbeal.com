@@ -9,7 +9,7 @@ services:
       - well-known:/root/work/www/well-known
       - letsencrypt:/root/work/letsencrypt
     command: >-
-      certonly --webroot
+      certonly --verbose --webroot
       -m cert@dougbeal.com
       --agree-tos --non-interactive
       --webroot-path=/root/work/www
