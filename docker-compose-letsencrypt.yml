@@ -9,7 +9,7 @@ services:
       - letsencrypt:/root/work/letsencrypt
     command: >-
       certonly --verbose --webroot
-      --staging
+      --staging --debug-challenges
       -m cert@dougbeal.com
       --agree-tos --non-interactive
       --webroot-path=/root/work/www
