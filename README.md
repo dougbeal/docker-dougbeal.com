@@ -39,3 +39,5 @@ usermod -aG dockerrun dockremap
 volumes needs to be owned by 165536.165536
 
 ```
+
+# BUG: webserver doesn't see certbot challenge files
