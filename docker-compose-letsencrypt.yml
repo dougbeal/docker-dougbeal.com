@@ -14,7 +14,7 @@ services:
       --webroot-path=/root/work/www
       --work-dir=/root/work/work
       --logs-dir=/root
-      --config-dir=./letsencrypt
+      --config-dir=/root/work/letsencrypt
       -d stage.dougbeal.com
 
 #      --staging --debug-challenges      
