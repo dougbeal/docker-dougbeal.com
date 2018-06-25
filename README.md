@@ -41,3 +41,7 @@ volumes needs to be owned by 165536.165536
 ```
 
 # BUG: webserver doesn't see certbot challenge files
+
+
+# update/run loop
+* ``` cd /home/dockerrun/docker-dougbeal.com/ && su dockerrun -c "git pull" && docker-compose up --build -d && docker-compose logs```
