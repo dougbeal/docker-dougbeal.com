@@ -28,7 +28,8 @@ services:
     links:
       - wordpress    
     ports:
-      - "80:80"
+      - 80:80
+      - 443:443
     restart: always
     volumes:
       # wait for v3.2 to be more widespread
