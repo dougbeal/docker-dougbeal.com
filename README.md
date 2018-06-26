@@ -45,3 +45,8 @@ volumes needs to be owned by 165536.165536
 
 # update/run loop
 * ``` cd /home/dockerrun/docker-dougbeal.com/ && su dockerrun -c "git pull" && docker-compose up --build -d && docker-compose logs```
+
+cd /home/dockerrun/docker-dougbeal.com/ && su dockerrun -c "git pull" && docker-compose up --build --force-recreate -d && docker-compose logs
+
+
+# why is wordpress not installing? wrong phase?

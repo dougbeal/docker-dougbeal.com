@@ -122,10 +122,7 @@ volumes:
       type: none
       device: ${PWD}/volumes/import-database
       o: bind
-  sempress:      
-  sempress-child:
-  nginx-config:
-  sql:
+
 
 
 networks:
