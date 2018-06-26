@@ -71,6 +71,8 @@ services:
     networks:
       - backend
       - debug
+    command: "php-fpm"
+      
 
 volumes:
   letsencrypt:
