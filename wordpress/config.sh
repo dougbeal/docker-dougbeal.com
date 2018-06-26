@@ -212,8 +212,8 @@ EOPHP
 
 	# now that we're definitely done writing configuration, let's clear out the relevant envrionment variables (so that stray "phpinfo()" calls don't leak secrets from our code)
 	for e in "${envs[@]}"; do
-		unset "$e"
+	    unset "$e"
 	done
 fi
 
-exec "wait-for ${WORDPRESS_DB_HOST:-database}:${DATABASE_PORT:-3306} -- $@"
+exec "/usr/local/bin/wait-for ${WORDPRESS_DB_HOST:-database}:${DATABASE_PORT:-3306} -- $@"
