@@ -216,4 +216,4 @@ EOPHP
 	done
 fi
 
-exec "/usr/local/bin/wait-for ${WORDPRESS_DB_HOST:-database}:${DATABASE_PORT:-3306} -- $@"
+exec wait-for ${WORDPRESS_DB_HOST:-database}:${DATABASE_PORT:-3306} -- $@
