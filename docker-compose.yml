@@ -6,7 +6,7 @@ services:
     image: mariadb:5.5
     volumes:
       - database:/var/lib/mysql
-      - import-database:/docker-entrypoint-initdb.d
+      - import-database:/docker-entrypoint-initdb.d:ro
     restart: on-failure
     ports:
       - "${DATABASE_PORT}:${DATABASE_PORT}"
@@ -44,6 +44,7 @@ services:
       - wordpress:${WEBSERVER_ROOT}
       - wordpress-themes:${WEBSERVER_ROOT}/wp-content/themes
       - wordpress-plugins:${WEBSERVER_ROOT}/wp-content/plugins
+      - import-wordpress:/import-wordpress:ro
     environment:
       NGINX_HOST: ${HOSTNAME}
       NGINX_PORT: 80
