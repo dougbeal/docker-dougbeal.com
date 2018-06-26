@@ -71,7 +71,6 @@ services:
     networks:
       - backend
       - debug
-    command: "/wait-for ${DATABASE_HOST}:${DATABASE_PORT} -- php-fpm"
 
 volumes:
   letsencrypt:

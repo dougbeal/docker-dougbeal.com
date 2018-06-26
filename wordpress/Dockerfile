@@ -5,6 +5,7 @@ FROM wordpress:4.9.6-php7.2-fpm-alpine
 
 ADD config.sh /config.sh
 COPY config.sh /usr/local/bin/
+COPY wait-for /usr/local/bin/
 RUN bash -x /config.sh php-fpm
 ADD php-fpm.conf /usr/local/etc/   
 
@@ -24,8 +25,6 @@ ENV WORDPRESS_CLI_GPG_KEY 3B9191625F3B1F1BF5DD3B47673A02042F6B6B7F
 
 ENV WORDPRESS_CLI_VERSION 1.1.0
 ENV WORDPRESS_CLI_SHA512 1fb4a3800441fc5188dac73efc6ca865076772ef698189ded379c53947d1fec30311e84eb4371455d415ef2cbb33d7593240fdf7b7f206277a12cfa8596d4b51
-
-COPY wait-for /
 
 RUN set -ex; \
 	\
