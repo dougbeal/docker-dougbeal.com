@@ -4,6 +4,7 @@ FROM wordpress:4.9.6-php7.2-fpm-alpine
 #wordpress:4.7.5-php7.0-fpm-alpine
 
 ADD config.sh /config.sh
+COPY config.sh /usr/local/bin/
 RUN bash -x /config.sh php-fpm
 ADD php-fpm.conf /usr/local/etc/   
 
