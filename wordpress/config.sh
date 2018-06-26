@@ -185,8 +185,8 @@ if (is_numeric($socket)) {
 }
 $user = getenv('WORDPRESS_DB_USER');
 $pass = getenv('WORDPRESS_DB_PASSWORD');
-$dbName = getenv('WORDPRESS_DB_NAME');
-
+$dbName = getenv('WORDPRESS_DB_NAME')
+;
 $maxTries = 10;
 do {
 	$mysql = new mysqli($host, $user, $pass, '', $port, $socket);
@@ -216,4 +216,4 @@ EOPHP
 	done
 fi
 
-exec "wait-for ${DATABASE_HOST}:${DATABASE_PORT} -- $@"
+exec "wait-for ${WORDPRESS_DB_HOST:-database}:${DATABASE_PORT:-3306} -- $@"
