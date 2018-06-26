@@ -43,3 +43,6 @@ RUN set -ex; \
 	chmod +x /usr/local/bin/wp; \
 	\
 	apk del .fetch-deps;
+
+
+ENTRYPOINT ["config.sh"]
