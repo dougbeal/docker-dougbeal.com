@@ -6,7 +6,6 @@ FROM wordpress:4.9.6-php7.2-fpm-alpine
 ADD config.sh /config.sh
 COPY config.sh /usr/local/bin/
 COPY wait-for /usr/local/bin/
-RUN bash -x /config.sh php-fpm
 ADD php-fpm.conf /usr/local/etc/   
 
 ############################################################
