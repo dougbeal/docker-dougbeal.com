@@ -12,21 +12,21 @@ services:
       - "${DATABASE_PORT}:${DATABASE_PORT}"
     environment:
       MYSQL_ROOT_PASSWORD: rootwordpress
-      MYSQL_DATABASE: wordpress
-      MYSQL_USER: wordpress
-      MYSQL_PASSWORD: wordpress
-      MYSQL_TCP_PORT: "${DATABASE_PORT}"
+      MYSQL_DATABASE: ${WORDPRESS_DATABASE_NAME} # init .sql files are loaded into it
+      MYSQL_USER: ${WORDPRESS_DATABASE_USER}
+      MYSQL_PASSWORD: ${WORDPRESS_DATABASE_PASSWORD}
+      MYSQL_TCP_PORT: ${DATABASE_PORT}
     networks:
       - backend
       - debug
     # docker exec indieweb_database_1 "mysql -u ${MYSQL_USER} -p ${MYSQL_USER} < /sql/dougbeal_wp116.sql"
-    
+
   webserver-wordpress:
     build: webserver-wordpress
     depends_on:
       - wordpress
     links:
-      - wordpress    
+      - wordpress
     ports:
       - 80:80
       - 443:443
@@ -61,19 +61,20 @@ services:
       - wordpress:${WORDPRESS_PATH}
       - wordpress-themes:${WORDPRESS_PATH}/wp-content/themes
       - wordpress-plugins:${WORDPRESS_PATH}/wp-content/plugins
-      - import-wordpress:/import-wordpress:ro      
+      - import-wordpress:/import-wordpress:ro
     links:
       - database
     environment:
       WORDPRESS_PATH: ${WEBSERVER_ROOT}/wordpress
       WORDPRESS_DB_HOST: "${DATABASE_HOST}:${DATABASE_PORT}"
-      WORDPRESS_DB_USER: wordpress
-      WORDPRESS_DB_PASSWORD: wordpress
+      WORDPRESS_DB_NAME: ${WORDPRESS_DATABASE_NAME}
+      WORDPRESS_DB_USER: ${WORDPRESS_DATABASE_USER}
+      WORDPRESS_DB_PASSWORD: ${WORDPRESS_DATABASE_PASSWORD}
     networks:
       - backend
       - debug
     command: "php-fpm"
-      
+
 
 volumes:
   letsencrypt:
@@ -87,42 +88,42 @@ volumes:
     driver_opts:
       type: none
       device: ${PWD}/volumes/well-known
-      o: bind              
+      o: bind
   database:
     driver: local
     driver_opts:
       type: none
       device: ${PWD}/volumes/database
-      o: bind    
+      o: bind
   wordpress:
     driver: local
     driver_opts:
       type: none
-      device: ${PWD}/volumes/wordpress
+      device: ${PWD}/volumes/${SITE_FOLDER}
       o: bind
   wordpress-themes:
     driver: local
     driver_opts:
       type: none
-      device: ${PWD}/volumes/wordpress-themes
+      device: ${PWD}/volumes/${SITE_FOLDER}-themes
       o: bind
   wordpress-plugins:
     driver: local
     driver_opts:
       type: none
-      device: ${PWD}/volumes/wordpress-plugins
-      o: bind      
+      device: ${PWD}/volumes/${SITE_FOLDER}-plugins
+      o: bind
   import-wordpress:
     driver: local
     driver_opts:
       type: none
-      device: ${PWD}/volumes/import-wordpress
+      device: ${PWD}/volumes/import-${SITE_FOLDER}
       o: bind
   import-database:
     driver: local
     driver_opts:
       type: none
-      device: ${PWD}/volumes/import-database
+      device: ${PWD}/volumes/import-${SITE_FOLDER}
       o: bind
 
 

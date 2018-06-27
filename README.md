@@ -48,5 +48,8 @@ volumes needs to be owned by 165536.165536
 
 cd /home/dockerrun/docker-dougbeal.com/ && su dockerrun -c "git pull" && docker-compose up --build --force-recreate -d && docker-compose logs
 
-
-# why is wordpress not installing? wrong phase?
+```
+mysql --user=wordpress --password=wordpress wordpress < /docker-entrypoint-initdb.d/dougbeal_wp116_2018_06_26.sql
+wp plugin --allow-root --path=/var/www/html install wordpress-importer indieweb webmention semantic-linkbacks micropub indieweb-post-kinds syndication-links indieauth --activate
+wp import --allow-root --path=/var/www/html myblog.wordpress.2018-06-26.xml --authors=create
+```
