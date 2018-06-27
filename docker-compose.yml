@@ -105,25 +105,25 @@ volumes:
     driver: local
     driver_opts:
       type: none
-      device: ${PWD}/volumes/${SITE_FOLDER}-themes
+      device: ${PWD}/volumes/${SITE_FOLDER}_d/themes
       o: bind
   wordpress-plugins:
     driver: local
     driver_opts:
       type: none
-      device: ${PWD}/volumes/${SITE_FOLDER}-plugins
+      device: ${PWD}/volumes/${SITE_FOLDER}_d/plugins
       o: bind
   import-wordpress:
     driver: local
     driver_opts:
       type: none
-      device: ${PWD}/volumes/import-${SITE_FOLDER}
+      device: ${PWD}/volumes/import-wordpress
       o: bind
   import-database:
     driver: local
     driver_opts:
       type: none
-      device: ${PWD}/volumes/import-${SITE_FOLDER}
+      device: ${PWD}/volumes/import-database
       o: bind
 
 
