@@ -65,6 +65,7 @@ services:
     links:
       - database
     environment:
+      WORDPRESS_TABLE_PREFIX: wphk # match legacy database
       WORDPRESS_PATH: ${WEBSERVER_ROOT}/wordpress
       WORDPRESS_DB_HOST: "${DATABASE_HOST}:${DATABASE_PORT}"
       WORDPRESS_DB_NAME: ${WORDPRESS_DATABASE_NAME}
