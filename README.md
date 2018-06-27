@@ -52,4 +52,5 @@ cd /home/dockerrun/docker-dougbeal.com/ && su dockerrun -c "git pull" && docker-
 mysql --user=wordpress --password=wordpress wordpress < /docker-entrypoint-initdb.d/dougbeal_wp116_2018_06_26.sql
 wp plugin --allow-root --path=/var/www/html install wordpress-importer indieweb webmention semantic-linkbacks micropub indieweb-post-kinds syndication-links indieauth --activate
 wp import --allow-root --path=/var/www/html myblog.wordpress.2018-06-26.xml --authors=create
+cd /home/dockerrun/docker-dougbeal.com/ && ./create_volume_directory.sh && su dockerrun -c "git pull" && docker-compose up --build -d && docker-compose logs
 ```
