@@ -41,9 +41,9 @@ services:
       #     read_only: true
       - well-known:${WEBSERVER_ROOT}/.well-known:ro
       - letsencrypt:/etc/letsencrypt:ro
-      - wordpress:${WEBSERVER_ROOT}
-      - wordpress-themes:${WEBSERVER_ROOT}/wp-content/themes
-      - wordpress-plugins:${WEBSERVER_ROOT}/wp-content/plugins
+      - wordpress_com_dougbeal:${WEBSERVER_ROOT}
+      - wordpress_com_dougbeal-themes:${WEBSERVER_ROOT}/wp-content/themes
+      - wordpress_com_dougbeal-plugins:${WEBSERVER_ROOT}/wp-content/plugins
     environment:
       NGINX_HOST: ${HOSTNAME}
       NGINX_PORT: 80
@@ -58,9 +58,9 @@ services:
       - database
     build: wordpress
     volumes:
-      - wordpress:${WORDPRESS_PATH}
-      - wordpress-themes:${WORDPRESS_PATH}/wp-content/themes
-      - wordpress-plugins:${WORDPRESS_PATH}/wp-content/plugins
+      - wordpress_com_dougbeal:${WORDPRESS_PATH}
+      - wordpress_com_dougbeal-themes:${WORDPRESS_PATH}/wp-content/themes
+      - wordpress_com_dougbeal-plugins:${WORDPRESS_PATH}/wp-content/plugins
       - import-wordpress:/import-wordpress:ro
     links:
       - database
@@ -75,7 +75,7 @@ services:
       - debug
     command: "php-fpm"
 
-
+# TODO - need to generate volumes based on sites
 volumes:
   letsencrypt:
     driver: local
@@ -95,23 +95,23 @@ volumes:
       type: none
       device: ${PWD}/volumes/database
       o: bind
-  wordpress:
+  wordpress_com_dougbeal:
     driver: local
     driver_opts:
       type: none
-      device: ${PWD}/volumes/${SITE_FOLDER}
+      device: ${PWD}/volumes/${SITE}
       o: bind
-  wordpress-themes:
+  wordpress_com_dougbeal-themes:
     driver: local
     driver_opts:
       type: none
-      device: ${PWD}/volumes/${SITE_FOLDER}_d/themes
+      device: ${PWD}/volumes/${SITE}_d/themes
       o: bind
-  wordpress-plugins:
+  wordpress_com_dougbeal-plugins:
     driver: local
     driver_opts:
       type: none
-      device: ${PWD}/volumes/${SITE_FOLDER}_d/plugins
+      device: ${PWD}/volumes/${SITE}_d/plugins
       o: bind
   import-wordpress:
     driver: local
