@@ -8,13 +8,14 @@ services:
       - well-known:/root/work/www/.well-known
       - letsencrypt:/root/work/letsencrypt
     command: >-
-      certonly --verbose --webroot --expand --force-renewal
+      certonly --verbose --webroot--expand 
       --agree-tos --non-interactive
       -m cert@dougbeal.com
       --webroot-path=/root/work/www
       --work-dir=/root/work/work
       --logs-dir=/root
       --config-dir=/root/work/letsencrypt
+      --certname dougbeal.com
       -d stage.dougbeal.com -d crow.moe -d crw.moe -d dougbeal.com -d www.dougbeal.com
 
 #      --staging --debug-challenges      
