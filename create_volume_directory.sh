@@ -10,3 +10,5 @@ mkdir -p volumes/import-wordpress/
 mkdir -p volumes/letsencrypt/
 mkdir -p volumes/well-known/
 mkdir -p volumes/database
+
+chown -R docksquash:docksquash volumes/*
