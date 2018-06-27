@@ -15,7 +15,7 @@ services:
       --work-dir=/root/work/work
       --logs-dir=/root
       --config-dir=/root/work/letsencrypt
-      -d stage.dougbeal.com
+      -d stage.dougbeal.com -d crow.moe -d crw.moe -d dougbeal.com -d www.dougbeal.com
 
 #      --staging --debug-challenges      
 #      --agree-tos --non-interactive
