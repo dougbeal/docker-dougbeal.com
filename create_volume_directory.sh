@@ -1,4 +1,4 @@
-#!/bin/sh -xs
+#!/bin/sh -x
 export $(cat .env | xargs)
 
 
