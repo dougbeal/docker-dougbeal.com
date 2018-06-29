@@ -76,8 +76,21 @@ services:
       - debug
     command: "php-fpm"
 
+  together:
+    depends_on:
+      - database
+    build: together
+    volumes:
+      - together:/root/together
+    
 # TODO - need to generate volumes based on sites
 volumes:
+  together:
+    driver: local
+    driver_opts:
+      type: none
+      device: ${PWD}/volumes/together
+      o: bind    
   letsencrypt:
     driver: local
     driver_opts:
