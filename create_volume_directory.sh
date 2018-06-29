@@ -12,4 +12,6 @@ mkdir -p volumes/well-known/
 mkdir -p volumes/database/
 mkdir -p volumes/together/
 
+
 chown -R docksquash:docksquash volumes/*
+find volumes/ -name .gitignore -exec chmod g+rw {} \;
