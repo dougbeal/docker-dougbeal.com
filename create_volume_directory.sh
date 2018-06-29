@@ -15,3 +15,4 @@ mkdir -p volumes/together/
 
 chown -R docksquash:docksquash volumes/*
 find volumes/ -name .gitignore -exec chmod g+rw {} \;
+find volumes/ -type d -exec chmod g+rw {} \;
