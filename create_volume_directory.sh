@@ -14,5 +14,6 @@ mkdir -p volumes/together/
 
 
 chown -R docksquash:docksquash volumes/*
+chown -R dock-www-data:dock-www-data volumes/${SITE}/wp-content/
 find volumes/ -name .gitignore -exec chmod g+rw {} \;
 find volumes/ -type d -exec chmod g+rw {} \;
