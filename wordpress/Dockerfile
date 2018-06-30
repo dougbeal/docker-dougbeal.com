@@ -43,5 +43,6 @@ RUN set -ex; \
 	\
 	apk del .fetch-deps;
 
-
+RUN touch /usr/local/etc/php/conf.d/uploads.ini \
+    && echo "upload_max_filesize = 500M;" >> /usr/local/etc/php/conf.d/uploads.ini
 ENTRYPOINT ["config.sh"]
