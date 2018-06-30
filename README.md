@@ -38,6 +38,11 @@ pip install docker-compose
 usermod -aG dockerrun dockremap
 volumes needs to be owned by 165536.165536
 
+www-data wants to update to wp-content
+root@localhost:/home/dockerrun/docker-dougbeal.com/volumes/wordpress_com_dougbeal/wp-content# groupadd -g 165618 dock-www-data
+root@localhost:/home/dockerrun/docker-dougbeal.com/volumes/wordpress_com_dougbeal/wp-content# useradd -u 165618 dock-www-data
+useradd: group dock-www-data exists - if you want to add this user to that group, use -g.
+root@localhost:/home/dockerrun/docker-dougbeal.com/volumes/wordpress_com_dougbeal/wp-content# useradd -u 165618 dock-www-data -g dock-www-data
 ```
 
 # BUG: webserver doesn't see certbot challenge files
@@ -138,3 +143,6 @@ cd /home/dockerrun/docker-dougbeal.com/ && su dockerrun -c "git pull" && docker-
 
 find /home/dockerrun/docker-dougbeal.com/volumes/letsencrypt/live/stage.dougbeal.com/ -name \*.pem | xargs -n 1 openssl x509 -text -noout -in
 ```
+
+
+# make sure body size is big enough for images https://stackoverflow.com/questions/2056124/nginx-client-max-body-size-has-no-effect
