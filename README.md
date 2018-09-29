@@ -146,3 +146,15 @@ find /home/dockerrun/docker-dougbeal.com/volumes/letsencrypt/live/stage.dougbeal
 
 
 # make sure body size is big enough for images https://stackoverflow.com/questions/2056124/nginx-client-max-body-size-has-no-effect
+
+
+# wordpress updates
+## core
+```
+ cd /home/dockerrun/docker-dougbeal.com/ && docker exec docker-dougbealcom_wordpress_1 wp --allow-root core update
+ ```
+
+## plugins
+```
+ cd /home/dockerrun/docker-dougbeal.com/ && docker exec docker-dougbealcom_wordpress_1 wp --allow-root plugin update hello
+```
