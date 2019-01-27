@@ -139,10 +139,13 @@ docker exec docker-dougbealcom_wordpress_1 wp --allow-root theme activate twenty
 ``` 
 
 
+# regenerate letsencrypt certs
 ```
 cd /home/dockerrun/docker-dougbeal.com/ && su dockerrun -c "git pull" && docker-compose -f docker-compose-letsencrypt.yml up --build
 
 find /home/dockerrun/docker-dougbeal.com/volumes/letsencrypt/live/stage.dougbeal.com/ -name \*.pem | xargs -n 1 openssl x509 -text -noout -in
+
+docker restart docker-dougbealcom_webserver-wordpress_1
 ```
 
 
