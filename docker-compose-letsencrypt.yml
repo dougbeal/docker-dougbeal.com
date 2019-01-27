@@ -16,7 +16,7 @@ services:
       --logs-dir=/root
       --config-dir=/root/work/letsencrypt
       --cert-name=dougbeal.com
-      -d dougbeal.com -d u.dougbeal.com -d stage.dougbeal.com -d crow.moe -d crw.moe -d www.dougbeal.com -d ek.dougbeal.com -d together.dougbeal.com -d www.crow.moe -d www.crw.moe -d foolscap.dougbeal.com
+      -d dougbeal.com -d u.dougbeal.com -d stage.dougbeal.com -d crow.moe -d crw.moe -d www.dougbeal.com -d ek.dougbeal.com -d together.dougbeal.com -d www.crow.moe -d www.crw.moe -d foolscap.dougbeal.com -d svc.foolscap.org
 
 #      --staging --debug-challenges      
 #      --agree-tos --non-interactive
