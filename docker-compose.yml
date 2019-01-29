@@ -82,6 +82,10 @@ services:
     build: together
     volumes:
       - together:/root/together
+
+  tito:
+    image: tito
+    
     
 # TODO - need to generate volumes based on sites
 volumes:
