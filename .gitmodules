@@ -1,0 +1,3 @@
+[submodule "volumes/openspace/themes/hugo-theme-openspace"]
+	path = volumes/openspace/themes/hugo-theme-openspace
+	url = https://github.com/dougbeal/hugo-theme-openspace.git
