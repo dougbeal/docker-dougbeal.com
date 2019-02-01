@@ -11,8 +11,8 @@ paginate = 5
 
 [languages]
   [languages.en]
-    title = "Terminal"
-    subtitle = "A simple, retro theme for Hugo"
+    title = "Panel Proposals"
+    subtitle = "Open Space Foolscap 2019 Panel Proposals"
     keywords = ""
     copyright = ""
     readMore = "Read more"
