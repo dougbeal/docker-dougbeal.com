@@ -93,7 +93,10 @@ services:
     ports:
       - 1313:1313
     volumes:
-      - 
+      - hugo_org_foolscap_open:${WEBSERVER_ROOT}/hugo_org.foolscap.open/
+    environment:
+      HUGO_POST_TARGET: https://open.foolscap.org
+      OPENSPACE_MARKDOWN_TARGET: ${WEBSERVER_ROOT}/hugo_org.foolscap.open/content/posts
     
     
 # TODO - need to generate volumes based on sites

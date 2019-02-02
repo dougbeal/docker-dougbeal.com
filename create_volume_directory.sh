@@ -11,6 +11,7 @@ mkdir -p volumes/letsencrypt/
 mkdir -p volumes/well-known/
 mkdir -p volumes/database/
 mkdir -p volumes/together/
+mkdir -p volumes/openspace/
 
 
 chown -R docksquash:docksquash volumes/*
