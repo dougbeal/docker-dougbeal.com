@@ -97,6 +97,21 @@ services:
     environment:
       HUGO_POST_TARGET: https://open.foolscap.org
       OPENSPACE_MARKDOWN_TARGET: ${WEBSERVER_ROOT}/hugo_org.foolscap.open/content/posts
+    networks:
+      - backend
+      - debug
+      
+  open-hugo:
+    image: open-hugo
+    build: open-hugo
+    volumes:
+      - hugo_org_foolscap_open:/hugo_org.foolscap.open/
+    working_dir: /hugo_org.foolscap.open/
+    environment:
+      HUGO_POST_TARGET: https://open.foolscap.org
+      OPENSPACE_MARKDOWN_TARGET: ${WEBSERVER_ROOT}/hugo_org.foolscap.open/content/post
+    command: "-w"
+    
     
     
 # TODO - need to generate volumes based on sites

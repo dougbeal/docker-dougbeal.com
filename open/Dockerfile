@@ -1,14 +1,10 @@
-FROM golang:alpine as build-go
-ADD . /go/src/github.com/dougbeal/open
-WORKDIR /go/src/github.com/dougbeal/open
-RUN apk add --no-cache git \
-    && go get \
-    && apk del git
-RUN go build -o main .
+FROM golang:latest as build-env
+WORKDIR /go/src/app
+ADD . /go/src/app
 
-FROM alpine
-RUN mkdir -p /open
-WORKDIR /open
+RUN go get -d -v ./...
+RUN go install -v ./...
 
-COPY --from=build-go /go/src/github.com/dougbeal/open/main /open/
-CMD ["/open/main"]
+FROM gcr.io/distroless/base
+COPY --from=build-env /go/bin/app /
+CMD ["/app"]
