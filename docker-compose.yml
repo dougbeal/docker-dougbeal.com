@@ -41,9 +41,10 @@ services:
       #     read_only: true
       - well-known:${WEBSERVER_ROOT}/.well-known:ro
       - letsencrypt:/etc/letsencrypt:ro
-      - wordpress_com_dougbeal:${WEBSERVER_ROOT}
-      - wordpress_com_dougbeal-themes:${WEBSERVER_ROOT}/wp-content/themes
-      - wordpress_com_dougbeal-plugins:${WEBSERVER_ROOT}/wp-content/plugins
+      - wordpress_com_dougbeal:${WEBSERVER_ROOT}/wordpress_com.dougbeal
+      - wordpress_com_dougbeal-themes:${WEBSERVER_ROOT}/wordpress_com.dougbeal/wp-content/themes
+      - wordpress_com_dougbeal-plugins:${WEBSERVER_ROOT}/wordpress_com.dougbeal/wp-content/plugins
+      - hugo_org_foolscap_open:${WEBSERVER_ROOT}/hugo_org.foolscap.open/
     environment:
       NGINX_HOST: ${HOSTNAME}
       NGINX_PORT: 80
@@ -85,6 +86,14 @@ services:
 
   tito:
     image: tito
+
+  open:
+    image: open
+    build: open
+    ports:
+      - 1313:1313
+    volumes:
+      - 
     
     
 # TODO - need to generate volumes based on sites
@@ -142,6 +151,12 @@ volumes:
     driver_opts:
       type: none
       device: ${PWD}/volumes/import-database
+      o: bind
+  hugo_org_foolscap_open:
+    driver: local
+    driver_opts:
+      type: none
+      device: ${PWD}/volumes/openspace
       o: bind
 
 
