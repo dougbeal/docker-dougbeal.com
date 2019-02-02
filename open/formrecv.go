@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"github.com/rs/formjson"
+	"github.com/kennygrant/sanitize"
 	"log"
 	"net/http"
 	"net/http/httputil"
@@ -14,7 +15,13 @@ import (
 func main() {
 	h := http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		inputFields := []string{"name", "panelType", "hidden-good-times-input", "hidden-bad-times-input", "mc", "title", "tagline", "description"}
-		//body := fmt.Sprintf("Hello %s! t %s", r.FormValue("name"), r.FormValue("title"), r.FormValue("hidden-good-times-input"))
+
+		path := os.Getenv("OPENSPACE_MARKDOWN_TARGET")
+		filename := sanitize.Path(r.FormValue("title"))
+
+		if len(path) == 0 {
+			path = "."
+		}
 		dump, err := httputil.DumpRequest(r, true)
 		log.Println(string(dump))
 
@@ -96,10 +103,17 @@ tagline = "{{.tagline}}"
 		if err != nil {
 			panic(err)
 		}
-		err = template.Execute(os.Stdout, Data)
-		d1 := []byte("hello\ngo\n")
-		err := ioutil.WriteFile("/tmp/dat1", d1, 0644)
-		check(err)		
+		f, ferr := os.Create(path + "/" + filename + ".md" )
+		if ferr != nil {
+			log.Println("failure create file: ", ferr)
+			return
+		}		
+		err = template.Execute(f, Data)
+		if err != nil {
+			panic(err)
+		}
+		// go home son
+		http.Redirect(w, r, r.Header.Get("Referer"), 302)
 	
 	})
 
