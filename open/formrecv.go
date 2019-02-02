@@ -1,6 +1,7 @@
 package main
 
 import (
+	"time"
 	"encoding/json"
 	"fmt"
 	"github.com/rs/formjson"
@@ -10,17 +11,25 @@ import (
 	"net/http/httputil"
 	"os"
 	"text/template"
+	"path"
 )
+
+func fatalError( msg string, err error, w http.ResponseWriter ) {
+	errorHtml := fmt.Sprintf("<html>failured to create file: %s.  Try going back and changing title?!?!?</html>", err)
+	log.Println(errorHtml)
+	w.Write([]byte(errorHtml))
+}
 
 func main() {
 	h := http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		inputFields := []string{"name", "panelType", "hidden-good-times-input", "hidden-bad-times-input", "mc", "title", "tagline", "description"}
 
-		path := os.Getenv("OPENSPACE_MARKDOWN_TARGET")
-		filename := sanitize.Path(r.FormValue("title"))
+		outputDirectory := os.Getenv("OPENSPACE_MARKDOWN_TARGET")
+		filename := sanitize.Path(r.FormValue("title")) + "_" + sanitize.Path(r.FormValue("name"))
+		
 
-		if len(path) == 0 {
-			path = "."
+		if len(outputDirectory) == 0 {
+			outputDirectory = "."
 		}
 		dump, err := httputil.DumpRequest(r, true)
 		log.Println(string(dump))
@@ -36,23 +45,23 @@ func main() {
 		var goodTimes []map[string]string
 		str := r.FormValue("hidden-good-times-input")
 		delete(Data, "hidden-good-times-input")
-		if str == "[]" {		
+		if str == "[]" {
 			log.Println( "hidden-good-times-input", str )
 			Data["hiddengoodtimesinput"] = make([]map[string]string, 0)
 		} else {
 			slice := []byte(str)
 			err := json.Unmarshal(slice, &goodTimes)
 			if err != nil {
-				http.Error(w, fmt.Sprint(err), http.StatusInternalServerError)
+				fatalError( "error.  report it", err, w )
 				return
-				
+
 			}
-			Data["hiddengoodtimesinput"] = goodTimes		
+			Data["hiddengoodtimesinput"] = goodTimes
 		}
 
 		var badTimes []map[string]string
 		str = r.FormValue("hidden-bad-times-input")
-		delete(Data, "hidden-bad-times-input")		
+		delete(Data, "hidden-bad-times-input")
 		if str == "[]" {
 			log.Println( "hidden-bad-times-input", str )
 			Data["hiddenbadtimesinput"] = make([]map[string]string, 0)
@@ -60,11 +69,10 @@ func main() {
 			slice := []byte(str)
 			err := json.Unmarshal(slice, &goodTimes)
 			if err != nil {
-				http.Error(w, fmt.Sprint(err), http.StatusInternalServerError)
+				fatalError( "error.  report it", err, w )
 				return
-				
 			}
-			Data["hiddenbadtimesinput"] = badTimes		
+			Data["hiddenbadtimesinput"] = badTimes
 		}
 		log.Println("%+v\n", Data)
 
@@ -103,18 +111,26 @@ tagline = "{{.tagline}}"
 		if err != nil {
 			panic(err)
 		}
-		f, ferr := os.Create(path + "/" + filename + ".md" )
+		filePath := path.Join(outputDirectory, filename + ".md" )
+
+
+		if _, err := os.Stat(filePath); err == nil {
+			filePath = outputDirectory + "/" + time.Now().Format(time.RFC3339) + "_" + filename + ".md"
+
+		}
+		f, ferr := os.Create( filePath )
 		if ferr != nil {
-			log.Println("failure create file: ", ferr)
+			fatalError( "failured to create file", ferr, w )
 			return
-		}		
+		}
 		err = template.Execute(f, Data)
 		if err != nil {
-			panic(err)
+			fatalError( "error during template execution.  report it", err, w )
+			return
 		}
 		// go home son
 		http.Redirect(w, r, r.Header.Get("Referer"), 302)
-	
+
 	})
 
 	handler := formjson.Handler(h)
