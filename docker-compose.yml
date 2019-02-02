@@ -84,8 +84,8 @@ services:
     volumes:
       - together:/root/together
 
-  tito:
-    image: tito
+  # tito:
+  #   image: tito
 
   open:
     image: open
