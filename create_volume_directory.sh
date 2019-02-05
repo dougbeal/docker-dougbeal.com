@@ -1,7 +1,7 @@
 #!/bin/sh -x
 export $(cat .env | xargs)
 # require variables to be set
-set -euo pipefail
+set -u
 
 mkdir -p volumes/${SITE}
 mkdir -p volumes/${SITE}_d/themes
