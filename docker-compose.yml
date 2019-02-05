@@ -77,12 +77,12 @@ services:
       - debug
     command: "php-fpm"
 
-  together:
-    depends_on:
-      - database
-    build: together
-    volumes:
-      - together:/root/together
+  # together:
+  #   depends_on:
+  #     - database
+  #   build: together
+  #   volumes:
+  #     - together:/root/together
 
   # tito:
   #   image: tito
