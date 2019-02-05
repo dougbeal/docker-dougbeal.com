@@ -15,13 +15,18 @@ Order into preferences https://johnny.github.io/jquery-sortable/
 Saturday - Columia B/2 - 2pm
 Saturday - Columia B/2 - 3pm
 Saturday - Columia A/1 - 4pm
+
 Saturday - Columia A/1 - 5pm
 Saturday - Columia B/2 - 5pm
+
 Saturday - Columia B/2 - 8pm
+
 Saturday - Columia A/1 - 9pm
 Saturday - Columia B/2 - 9pm
+
 Sunday - Columbia A/1 - 10am
 Sunday - Columbia B/2 - 10am
+
 Sunday - Columbia A/1 - 11am
 Sunday - Columbia B/2 - 11am
 
