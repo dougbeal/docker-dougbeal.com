@@ -20,7 +20,7 @@ find ./volumes -type d \( -path ${SITE} database \) -prune -o -print0 | xargs -0
 # wp-content is writable by being owned by dock-www-data:dock-www-data
 find ./volumes/${SITE}/wp-content/ -type d \( -path BANANA_FOR_SCALE \) -prune -o -print0 | xargs -0 chown dock-www-data:dock-www-data
 # database is writble by docker-root (166535)
-find ./volumes/dataase/ -type d \( -path BANANA_FOR_SCALE \) -prune -o -print0 chown 166535:166535 -R volumes/database
+find ./volumes/database/ -type d \( -path BANANA_FOR_SCALE \) -prune -o -print0 chown 166535:166535 -R volumes/database
 find . -type d \( -path volumes \) -prune -o -print0 | xargs -0 chown dockerrun:dockerrun
 # make sure .gitgnore is writeble
 find volumes/ -name .gitignore -exec chmod g+rw {} \;
