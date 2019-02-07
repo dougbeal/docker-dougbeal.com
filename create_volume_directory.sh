@@ -29,6 +29,11 @@ find ./volumes/${SITE} -maxdepth 1 -type d \( -path ./volumes/${SITE}/wp-content
 find ./volumes/${SITE}/wp-content/ -maxdepth 1 -type d \( -path BANANA_FOR_SCALE \) -prune -o -print0 | \
     xargs -0 chown -R dock-www-data:dock-www-data
 
+find ./volumes/openspace/public/ -maxdepth 1 -type d \( -path BANANA_FOR_SCALE \) -prune -o -print0 | \
+    xargs -0 chown -R dock-www-data:dock-www-data
+
+
+
 # database is writable by container mysql (uid 999) (mapped to uid 999+docksquash = 166535 on host)
 find ./volumes/database/ -maxdepth 1 -type d \( -path BANANA_FOR_SCALE \) -prune -o -print0 | \
     xargs -0 chown -R $(( $(id -u docksquash ) + 999 )):$(( $(id -g docksquash ) + 999 ))
