@@ -41,7 +41,7 @@ find ./volumes/database/ -maxdepth 1 -type d \( -path BANANA_FOR_SCALE \) -prune
 
 # everything excluding volumes is owned by dockerrun and stored in git
 find .  -maxdepth 1 -type d \( -path volumes \) -prune -o -print0 | \
-    xargs -0 -R chown dockerrun:dockerrun
+    xargs -0 chown dockerrun:dockerrun -R 
 
 # make sure .gitgnore is writeble
 find volumes/ -name .gitignore -exec chmod g+rw {} \;
