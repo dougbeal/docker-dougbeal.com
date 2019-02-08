@@ -88,7 +88,6 @@ services:
   #   image: tito
 
   open:
-    image: open
     build: open
     ports:
       - 1313:1313
@@ -102,7 +101,6 @@ services:
       - debug
       
   open-hugo:
-    image: open-hugo
     build: open-hugo
     volumes:
       - hugo_org_foolscap_open:/hugo_org.foolscap.open/
