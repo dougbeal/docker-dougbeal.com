@@ -37,7 +37,7 @@ chown -R $(( $(id -u docksquash ) + 999 )):$(( $(id -g docksquash ) + 999 )) ./v
 
 
 # everything excluding volumes is owned by dockerrun and stored in git
-find .  -mindepth 1 -maxdepth 1 -type d \( -path volumes \) -prune -o -print0 | \
+find .  -mindepth 1 -maxdepth 1 -type d \( -path ./volumes \) -prune -o -print0 | \
     xargs -0 chown dockerrun:dockerrun -R 
 
 # make sure .gitgnore is writeble
