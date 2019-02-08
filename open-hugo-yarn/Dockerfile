@@ -1,3 +1,4 @@
 FROM node:alpine
-RUN apk add yarn
+RUN apk add --no-cache \
+    yarn
 
