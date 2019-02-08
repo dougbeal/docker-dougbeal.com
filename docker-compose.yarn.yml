@@ -1,5 +1,4 @@
   open-hugo-yarn:
-    image: open-hugo-yarn
     build: open-hugo-yarn
     volumes:
       - hugo_org_foolscap_open:/hugo_org.foolscap.open/
