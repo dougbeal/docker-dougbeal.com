@@ -45,8 +45,8 @@ services:
       - wordpress_com_dougbeal-themes:${WEBSERVER_ROOT}/wordpress_com.dougbeal/wp-content/themes
       - wordpress_com_dougbeal-plugins:${WEBSERVER_ROOT}/wordpress_com.dougbeal/wp-content/plugins
       - hugo_org_foolscap_open:${WEBSERVER_ROOT}/hugo_org.foolscap.open/
-      - org.foolscap.podcast:${WEBSERVER_ROOT}/org.foolscap.podcast/
-      - org.foolscap.podcast_media:${WEBSERVER_ROOT}/org.foolscap.podcast/media
+      - org.foolscap.podcast:${WEBSERVER_ROOT}/org.foolscap.podcast/:ro
+      - org.foolscap.podcast_media:${WEBSERVER_ROOT}/org.foolscap.podcast/media:ro
     environment:
       NGINX_HOST: ${HOSTNAME}
       NGINX_PORT: 80

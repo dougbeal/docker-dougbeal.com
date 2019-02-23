@@ -9,4 +9,4 @@ services:
       - org.foolscap.podcast_media:/build/media/
     working_dir: /build/
     
-    command: --debug --verbose --cacheDir /build/cache
+    command: --debug --verbose --cacheDir /build/cache --verboseLog --log /dev/stdout
