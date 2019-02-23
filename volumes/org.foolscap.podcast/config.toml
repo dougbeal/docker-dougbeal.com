@@ -1,0 +1,21 @@
+baseURL = "http://podcast.foolscap.org/"
+languageCode = "en-us"
+title = "The Foolscap Podcast"
+
+[params]
+        favicon = "icon/favicon.ico"
+        description = "A look back at Foolscaps of yore."
+
+
+[params.feed]
+        explicit = "no"
+
+
+[params.social]
+        twitter = "foolscapcon"
+
+
+[params.links]
+        [params.links.foolscap]
+        name = "Foolscap"
+        url = "http://foolscap.org"
