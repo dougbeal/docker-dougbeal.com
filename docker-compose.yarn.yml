@@ -1,7 +1,11 @@
+version: '3'
+
+# docker-compose -f docker-compose.yml -f docker-compose.yarn.yml up --build open-hugo-yarn  && docker logs docker-dougbealcom_open-hugo-yarn_1
+services:
   open-hugo-yarn:
     build: open-hugo-yarn
     volumes:
       - hugo_org_foolscap_open:/hugo_org.foolscap.open/
     working_dir: /hugo_org.foolscap.open/
     
-    command: sh -c "cd themes/hugo-theme-openspace/assets/js && yarn install && cd themes/hugo-theme-openspace/assets/scss && yarn install"
+    command: sh -c "pwd && ls -al && (( cd themes/hugo-theme-openspace/assets/js && yarn install )) && (( cd themes/hugo-theme-openspace/assets/scss && yarn install ))"
