@@ -1,0 +1,8 @@
+  hugo-build-org-foolscap-podcast:
+    build: hugo-build
+    volumes:
+      - org.foolscap.podcast:/build/
+      - org.foolscap.podcast_media:/build/media/
+    working_dir: /build/
+    
+    command: hugo --debug --verbose
