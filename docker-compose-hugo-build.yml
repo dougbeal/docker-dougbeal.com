@@ -1,4 +1,4 @@
-# docker-compose -f docker-compose.yml -f docker-compose-hugo-build.yml up --build hugo-build  && docker logs docker-dougbealcom_open-hugo-build_1
+# docker-compose -f docker-compose.yml -f docker-compose-hugo-build.yml up --build hugo-build-org-foolscap-podcast  && docker logs docker-dougbealcom_hugo-build-org-foolscap-podcast_1
 version: '3'
 
 services:
@@ -9,4 +9,4 @@ services:
       - org.foolscap.podcast_media:/build/media/
     working_dir: /build/
     
-    command: hugo --debug --verbose
+    command: --debug --verbose
