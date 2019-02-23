@@ -1,3 +1,7 @@
+# docker-compose -f docker-compose.yml -f docker-compose-hugo-build.yml up --build hugo-build  && docker logs docker-dougbealcom_open-hugo-build_1
+version: '3'
+
+services:
   hugo-build-org-foolscap-podcast:
     build: hugo-build
     volumes:
