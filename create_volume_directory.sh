@@ -27,8 +27,13 @@ find ./volumes/${SITE}  -mindepth 1 -maxdepth 1 -type d \( -path ./volumes/${SIT
 
 # wp-content is writable by being owned by dock-www-data:dock-www-data
 chown -R dock-www-data:dock-www-data ./volumes/${SITE}/wp-content/
+find ./volumes/${SITE} -name wp-config\* -print0 |
+    xargs -0 chown dock-www-data:dock-www-data
+# needs to write temp sed files to this directory ^---^
+chown dock-www-data:dock-www-data ./volumes/${SITE}
 
 chown -R dock-www-data:dock-www-data ./volumes/openspace/public/
+chown -R dock-www-data:dock-www-data ./volumes/openspace/resources/
 
 
 
