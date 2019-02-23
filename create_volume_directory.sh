@@ -14,6 +14,8 @@ mkdir -p volumes/database/
 mkdir -p volumes/together/
 mkdir -p volumes/openspace/
 mkdir -p volumes/org.foolscap.podcast/
+mkdir -p volumes/org.foolscap.podcast/public/
+mkdir -p volumes/org.foolscap.podcast/cache/
 mkdir -p volumes/org.foolscap.podcast_media/
 
 
@@ -31,6 +33,8 @@ find ./volumes/${SITE}  -mindepth 1 -maxdepth 1 -type d \( -path ./volumes/${SIT
 chown -R dock-www-data:dock-www-data ./volumes/${SITE}/wp-content/
 
 chown -R dock-www-data:dock-www-data ./volumes/openspace/public/
+chown -R dock-www-data:dock-www-data ./volumes/org.foolscap.podcast/public/
+chown -R dock-www-data:dock-www-data ./volumes/org.foolscap.podcast/cache/
 
 
 
