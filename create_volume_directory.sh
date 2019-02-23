@@ -12,10 +12,15 @@ mkdir -p volumes/letsencrypt/
 mkdir -p volumes/well-known/
 mkdir -p volumes/database/
 mkdir -p volumes/together/
-mkdir -p volumes/openspace/
-mkdir -p volumes/org.foolscap.podcast/
+
+mkdir -p volumes/openspace/public/
+mkdir -p volumes/openspace/resources/
+mkdir -p volumes/openspace/cache/
+
 mkdir -p volumes/org.foolscap.podcast/public/
+mkdir -p volumes/org.foolscap.podcast/resources/
 mkdir -p volumes/org.foolscap.podcast/cache/
+
 mkdir -p volumes/org.foolscap.podcast_media/
 
 
@@ -37,10 +42,12 @@ find ./volumes/${SITE} -name wp-config\* -print0 |
 chown dock-www-data:dock-www-data ./volumes/${SITE}
 
 chown -R dock-www-data:dock-www-data ./volumes/openspace/public/
+chown -R dock-www-data:dock-www-data ./volumes/openspace/cache/
 chown -R dock-www-data:dock-www-data ./volumes/openspace/resources/
 
 chown -R dock-www-data:dock-www-data ./volumes/org.foolscap.podcast/public/
 chown -R dock-www-data:dock-www-data ./volumes/org.foolscap.podcast/cache/
+chown -R dock-www-data:dock-www-data ./volumes/org.foolscap.podcast/resources/
 
 
 
