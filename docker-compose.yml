@@ -45,6 +45,8 @@ services:
       - wordpress_com_dougbeal-themes:${WEBSERVER_ROOT}/wordpress_com.dougbeal/wp-content/themes
       - wordpress_com_dougbeal-plugins:${WEBSERVER_ROOT}/wordpress_com.dougbeal/wp-content/plugins
       - hugo_org_foolscap_open:${WEBSERVER_ROOT}/hugo_org.foolscap.open/
+      - org.foolscap.podcast:${WEBSERVER_ROOT}/org.foolscap.podcast/
+      - org.foolscap.podcast_media:${WEBSERVER_ROOT}/org.foolscap.podcast/media
     environment:
       NGINX_HOST: ${HOSTNAME}
       NGINX_PORT: 80
@@ -99,7 +101,7 @@ services:
     networks:
       - backend
       - debug
-      
+
   open-hugo:
     build: open-hugo
     volumes:
@@ -109,9 +111,9 @@ services:
       HUGO_POST_TARGET: https://open.foolscap.org
       OPENSPACE_MARKDOWN_TARGET: ${WEBSERVER_ROOT}/hugo_org.foolscap.open/content/post
     command: "-w"
-    
-    
-    
+
+
+
 # TODO - need to generate volumes based on sites
 volumes:
   together:
@@ -119,7 +121,7 @@ volumes:
     driver_opts:
       type: none
       device: ${PWD}/volumes/together
-      o: bind    
+      o: bind
   letsencrypt:
     driver: local
     driver_opts:
@@ -174,7 +176,18 @@ volumes:
       type: none
       device: ${PWD}/volumes/openspace
       o: bind
-
+  org.foolscap.podcast:
+    driver: local
+    driver_opts:
+      type: none
+      device: ${PWD}/volumes/org.foolscap.podcast
+      o: bind
+  org.foolscap.podcast_media:
+    driver: local
+    driver_opts:
+      type: none
+      device: ${PWD}/volumes/org.foolscap.podcast_media
+      o: bind
 
 
 networks:

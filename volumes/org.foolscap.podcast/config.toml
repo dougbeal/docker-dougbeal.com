@@ -5,7 +5,7 @@ title = "The Foolscap Podcast"
 [params]
         favicon = "icon/favicon.ico"
         description = "A look back at Foolscaps of yore."
-
+        media_prefix = "https://podcast.foolscap.org/media/"
 
 [params.feed]
         explicit = "no"
