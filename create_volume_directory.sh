@@ -13,6 +13,8 @@ mkdir -p volumes/well-known/
 mkdir -p volumes/database/
 mkdir -p volumes/together/
 mkdir -p volumes/openspace/
+mkdir -p volumes/org.foolscap.podcast/
+mkdir -p volumes/org.foolscap.podcast_media/
 
 
 
