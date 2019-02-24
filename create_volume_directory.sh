@@ -45,11 +45,13 @@ chown -R dock-www-data:dock-www-data ./volumes/openspace/public/
 chown -R dock-www-data:dock-www-data ./volumes/openspace/cache/
 chown -R dock-www-data:dock-www-data ./volumes/openspace/resources/
 
+chown -R docksquash:docksquash ./volumes/openspace/themes/*/assets/
+
 chown -R dock-www-data:dock-www-data ./volumes/org.foolscap.podcast/public/
 chown -R dock-www-data:dock-www-data ./volumes/org.foolscap.podcast/cache/
 chown -R dock-www-data:dock-www-data ./volumes/org.foolscap.podcast/resources/
 
-
+chown -R docksquash:docksquash ./volumes/org.foolscap.podcast/themes/*/assets/
 
 
 # database is writable by container mysql (uid 999) (mapped to uid 999+docksquash = 166535 on host)
