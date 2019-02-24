@@ -1,25 +1,21 @@
-# docker-compose -f docker-compose.yml -f docker-compose-hugo-build.yml up --build hugo-build-org-foolscap-podcast  && docker logs docker-dougbealcom_hugo-build-org-foolscap-podcast_1
 version: '3'
 
 services:
-  build-org-foolscap-podcast:
-    build: build/hugo-yarn
+  build-org-foolscap-podcast-yarn:
+    build: build/yarn
     volumes:
       - org.foolscap.podcast:/build/
       - org.foolscap.podcast_media:/build/media/
-    working_dir: /build/
-    command: sh -xc "find . -name package.json -not -path '*/node_modules*' -not -path '*/bower_components*' -print -execdir yarn --verbose  --non-interactive \; && /hugo --debug --verbose --cacheDir /build/cache --verboseLog --log --logFile /dev/stdout"
 
+  build-org-foolscap-podcast-hugo:
+    build: build/hugo
+    volumes:
+      - org.foolscap.podcast:/build/
+      - org.foolscap.podcast_media:/build/media/
 
-
-
-
-# docker-compose -f docker-compose.yml -f docker-compose.yarn.yml up --build open-hugo-yarn  && docker logs docker-dougbealcom_open-hugo-yarn_1
-
-  build-org-foolscap-open:
-    build: build/hugo-yarn
+  build-org-foolscap-open-yarn:
+    build: build/yarn
     volumes:
       - hugo_org_foolscap_open:/build/
-    working_dir: /build/
-    
-    command: sh -c "pwd && ls -al && find . -name package.json -not -path '*/node_modules*' -not -path '*/bower_components*' -print -exec yarn \; && /hugo --debug --verbose --cacheDir /build/cache --verboseLog --log --logFile /dev/stdout"
+ 
+ 
