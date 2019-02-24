@@ -165,5 +165,5 @@ docker restart docker-dougbealcom_webserver-wordpress_1
 
 ## build hugo
 ```
-cd /home/dockerrun/docker-dougbeal.com/ && su dockerrun -c "git pull" && docker-compose -f docker-compose.yml -f docker-compose-build.yml up --build -d  build-org-foolscap-podcast && docker-compose -f docker-compose.yml -f docker-compose-build.yml logs build-org-foolscap-podcast
+cd /home/dockerrun/docker-dougbeal.com/ && su dockerrun -c "git pull && git submodule update" && docker-compose -f docker-compose.yml -f docker-compose-build.yml up --build -d  build-org-foolscap-podcast && docker-compose -f docker-compose.yml -f docker-compose-build.yml logs build-org-foolscap-podcast
 ```
