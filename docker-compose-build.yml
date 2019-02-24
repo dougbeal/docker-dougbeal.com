@@ -8,7 +8,7 @@ services:
       - org.foolscap.podcast:/build/
       - org.foolscap.podcast_media:/build/media/
     working_dir: /build/
-    command: sh -c "pwd && ls -al && find . -name package.json -not -path '*/node_modules*' -not -path '*/bower_components*' -print -exec yarn && /hugo --debug --verbose --cacheDir /build/cache --verboseLog --log --logFile /dev/stdout"
+    command: sh -c "pwd && ls -al && find . -name package.json -not -path '*/node_modules*' -not -path '*/bower_components*' -print -exec yarn \; && /hugo --debug --verbose --cacheDir /build/cache --verboseLog --log --logFile /dev/stdout"
 
 
 
@@ -22,4 +22,4 @@ services:
       - hugo_org_foolscap_open:/build/
     working_dir: /build/
     
-    command: sh -c "pwd && ls -al && find . -name package.json -not -path '*/node_modules*' -not -path '*/bower_components*' -print -exec yarn && /hugo --debug --verbose --cacheDir /build/cache --verboseLog --log --logFile /dev/stdout"
+    command: sh -c "pwd && ls -al && find . -name package.json -not -path '*/node_modules*' -not -path '*/bower_components*' -print -exec yarn \; && /hugo --debug --verbose --cacheDir /build/cache --verboseLog --log --logFile /dev/stdout"
