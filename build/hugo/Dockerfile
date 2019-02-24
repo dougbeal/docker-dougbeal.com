@@ -6,4 +6,4 @@ FROM gcr.io/distroless/cc
 COPY --from=dl-env /hugo /
 WORKDIR "/build"
 
-ENTRYPOINT [ "/hugo", "--debug", "--verbose", "--cacheDir", "/build/cache", "--verboseLog", "--log", "--logFile", "/dev/stdout" ]
+ENTRYPOINT ["/hugo", "--debug", "--verbose", "--cacheDir", "/build/cache", "--verboseLog", "--log", "--logFile", "/dev/stdout"]
