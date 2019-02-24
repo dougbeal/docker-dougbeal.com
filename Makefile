@@ -1,3 +1,6 @@
+update:
+	su dockerrun -c "git pull && git submodule update"
+
 org-foolscap-podcast: org-foolscap-podcast-yarn org-foolscap-podcast-hugo
 
 org-foolscap-podcast-yarn:
