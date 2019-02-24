@@ -1,6 +1,6 @@
         baseURL = "http://podcast.foolscap.org/"
         languageCode = "en-us"
-        title = "The Foolscap Podcast"
+        title = "The Voices of Foolscap"
         theme = "castanet"
 
 [permalinks]

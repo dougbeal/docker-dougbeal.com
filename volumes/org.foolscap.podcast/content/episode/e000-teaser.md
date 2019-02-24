@@ -15,6 +15,6 @@ guests: []
 
 ---
 
-A look back at [Foolscaps](http://foolscap.org) of yore.
+A listen back to stories of [Foolscaps](http://foolscap.org) of yore.
 
 Foolscap is a new kind of convention. We bring together writers, artists, fans, thinkers and makers to create a weekend-long conversation about the things that excite us. Everyone is interesting at Foolscap. By bringing together a community of diverse interests and experiences, we make a space where we all learn from each other.
