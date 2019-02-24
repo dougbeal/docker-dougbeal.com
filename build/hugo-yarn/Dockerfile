@@ -7,5 +7,5 @@ RUN wget -O- https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}
 
 FROM node:alpine
 RUN apk add --no-cache \
-    yarn findutils
+    yarn findutils git
 COPY --from=dl-env /hugo /
