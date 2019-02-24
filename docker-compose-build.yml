@@ -8,7 +8,7 @@ services:
       - org.foolscap.podcast:/build/
       - org.foolscap.podcast_media:/build/media/
     working_dir: /build/
-    command: sh -xc "pwd && ls -al && find . -name package.json -not -path '*/node_modules*' -not -path '*/bower_components*' -print -execdir yarn --verbose  --non-interactive \; && /hugo --debug --verbose --cacheDir /build/cache --verboseLog --log --logFile /dev/stdout"
+    command: sh -xc "find . -name package.json -not -path '*/node_modules*' -not -path '*/bower_components*' -print -execdir yarn --verbose  --non-interactive \; && /hugo --debug --verbose --cacheDir /build/cache --verboseLog --log --logFile /dev/stdout"
 
 
 
