@@ -4,5 +4,5 @@ RUN apk add --no-cache \
 
 WORKDIR "/build"
 ENTRYPOINT ["/usr/bin/find", ".", "-name", "package.json", "-not", "-path", "'*/node_modules*'", "-not", "-path", "'*/bower_components*'", "-print"]
-CMD [, "-execdir", "yarn", "--non-interactive", ";"]
+CMD ["-execdir", "yarn", "--non-interactive", ";"]
 
