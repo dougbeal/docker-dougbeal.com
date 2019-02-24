@@ -1,5 +1,5 @@
 update:
-	su dockerrun -c "git pull && git submodule update"
+	su dockerrun -c "git pull && git submodule update && git submodule foreach 'git pull || :'"
 
 org-foolscap-podcast: org-foolscap-podcast-yarn org-foolscap-podcast-hugo
 
