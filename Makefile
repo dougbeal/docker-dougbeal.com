@@ -19,3 +19,6 @@ com-dougbeal-wp-plugins-git:
 
 com-dougbeal-wp-plugins:
 	docker exec docker-dougbealcom_wordpress_1 wp --allow-root plugin update --all
+
+com-dougbeal-wp-webserver:
+	docker-compose -f docker-compose.yml up --build --detach webserver-wordpress && docker restart docker-dougbealcom_webserver-wordpress_1
