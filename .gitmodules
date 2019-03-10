@@ -3,5 +3,5 @@
 	url = https://github.com/dougbeal/hugo-theme-openspace.git
 [submodule "volumes/org.foolscap.podcast"]
 	path = volumes/org.foolscap.podcast
-        url = https://github.com/foolscapcon/org.foolscap.podcast.git
+	url = https://github.com/foolscapcon/org.foolscap.podcast.git
 
