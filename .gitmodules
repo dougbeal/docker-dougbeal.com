@@ -1,6 +1,4 @@
 [submodule "volumes/openspace/themes/hugo-theme-openspace"]
 	path = volumes/openspace/themes/hugo-theme-openspace
 	url = https://github.com/dougbeal/hugo-theme-openspace.git
-[submodule "volumes/org.foolscap.podcast/themes/catanet"]
-	path = volumes/org.foolscap.podcast/themes/castanet
-	url = https://github.com/foolscapcon/castanet.git
+
