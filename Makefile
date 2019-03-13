@@ -29,15 +29,15 @@ com-dougbeal-wp-webserver:
 
 VOLUMES = iw26 iw26-child org.foolscap.podcast
 
-.PHONY: $(VOLUMES)
+.PHONY: $(VOLUMES) volumes
 
-iw26:
+iw26: ./volumes/wordpress_com_dougbeal_d/themes/$@
 	$(call git_in_volume ./volumes/wordpress_com_dougbeal_d/themes/$@ https://github.com/dshanske/$@.git)
 
-iw26-child:
+iw26-child: ./volumes/wordpress_com_dougbeal_d/themes/$@
 	$(call git_in_volume ./volumes/wordpress_com_dougbeal_d/themes/$@ https://github.com/dougbeal/$@.git)
 
-org.foolscap.podcast:
+org.foolscap.podcast: ./volumes/$@
 	$(call git_in_volume ./volumes/$@ https://github.com/foolscapcon/$@.git)
 #volumes/wordpress_com_dougbeal_d/plugins/indieweb-post-kinds/.git
 #volumes/wordpress_com_dougbeal_d/plugins/wiki-embed/.git
