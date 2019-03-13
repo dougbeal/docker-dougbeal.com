@@ -48,6 +48,7 @@ chown -R dock-www-data:dock-www-data ./volumes/openspace/resources/
 
 chown -R docksquash:docksquash ./volumes/openspace/themes/*/assets/
 
+chown -R docksquash:docksquash ./volumes/org.foolscap.podcast
 chown -R dock-www-data:dock-www-data ./volumes/org.foolscap.podcast/public/
 chown -R dock-www-data:dock-www-data ./volumes/org.foolscap.podcast/cache/
 chown -R dock-www-data:dock-www-data ./volumes/org.foolscap.podcast/resources/
