@@ -1,5 +1,5 @@
 define git_in_volume =
-	bash -c "DIR=$(1); (cd \"$DIR\" && git status) || (cd \"${DIR%/*}\" && git clone $(2) \"$DIR\")"
+	bash -c "DIR=${1}; (cd \"$DIR\" && git status) || (cd \"${DIR%/*}\" && git clone ${2} \"$DIR\")"
 endef
 
 update:
