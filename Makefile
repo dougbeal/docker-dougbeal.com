@@ -27,6 +27,10 @@ com-dougbeal-wp-plugins:
 com-dougbeal-wp-webserver:
 	docker-compose -f docker-compose.yml up --build --detach webserver-wordpress && docker restart docker-dougbealcom_webserver-wordpress_1
 
+VOLUMES = iw26 iw26-child org.foolscap.podcast
+
+.PHONY: $(VOLUMES)
+
 iw26:
 	$(call git_in_volume ./volumes/wordpress_com_dougbeal_d/themes/$@ https://github.com/dshanske/$@.git)
 
@@ -35,10 +39,9 @@ iw26-child:
 
 org.foolscap.podcast:
 	$(call git_in_volume ./volumes/$@ https://github.com/foolscapcon/$@.git)
-.PHONY: org.foolscap.podcast
 #volumes/wordpress_com_dougbeal_d/plugins/indieweb-post-kinds/.git
 #volumes/wordpress_com_dougbeal_d/plugins/wiki-embed/.git
 #volumes/wordpress_com_dougbeal_d/plugins/micropub/.git
 #volumes/openspace/themes/hugo-theme-openspace/.git
 
-volumes: iw26 iw26-child org.foolscap.podcast
+volumes: $(VOLUMES)
