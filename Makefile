@@ -2,8 +2,19 @@ define git_in_volume =
 	bash -c "DIR=${1}; (cd \"$DIR\" && git status) || (cd \"${DIR%/*}\" && git clone ${2} \"$DIR\")"
 endef
 
-update:
+update: git-update volumes-update-git wordpress-update-plugins
+
+
+git-update:
 	su dockerrun -c "git pull && git submodule update && git submodule foreach 'git pull || :'"
+
+volumes-update-git:
+	su dockerrun -c "find /home/dockerrun/docker-dougbeal.com/volumes/ -name .git -type d -print -execdir git pull \;"
+
+wordpress-update-plugins: wordpress-update-git
+	docker exec docker-dougbealcom_wordpress_1 wp --allow-root plugin update --all
+
+
 
 org-foolscap-podcast: org-foolscap-podcast-yarn org-foolscap-podcast-hugo
 
