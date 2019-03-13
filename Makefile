@@ -35,7 +35,7 @@ iw26-child:
 
 org.foolscap.podcast:
 	$(call git_in_volume ./volumes/$@ https://github.com/foolscapcon/$@.git)
-
+.PHONY: org.foolscap.podcast
 #volumes/wordpress_com_dougbeal_d/plugins/indieweb-post-kinds/.git
 #volumes/wordpress_com_dougbeal_d/plugins/wiki-embed/.git
 #volumes/wordpress_com_dougbeal_d/plugins/micropub/.git
