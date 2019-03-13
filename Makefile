@@ -31,7 +31,7 @@ VOLUMES = iw26 iw26-child org.foolscap.podcast
 
 .PHONY: $(VOLUMES) volumes
 volumes: $(VOLUMES)
-	echo "volumes"
+	echo "volumes $@ $<"
 	$(call git_in_volume ./volumes/wordpress_com_dougbeal_d/themes/iw26 https://github.com/dshanske/iw26.git)
 	$(call git_in_volume ./volumes/wordpress_com_dougbeal_d/themes/iw26-child https://github.com/dougbeal/iw26-child.git)
 	$(call git_in_volume ./volumes/org.foolscap.podcast https://github.com/foolscapcon/org.foolscap.podcast.git)
