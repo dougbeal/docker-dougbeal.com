@@ -167,3 +167,29 @@ docker restart docker-dougbealcom_webserver-wordpress_1
 ```
 cd /home/dockerrun/docker-dougbeal.com/ && su dockerrun -c "git pull && git submodule update" && docker-compose -f docker-compose.yml -f docker-compose-build.yml up --build -d  build-org-foolscap-podcast && docker-compose -f docker-compose.yml -f docker-compose-build.yml logs build-org-foolscap-podcast
 ```
+
+## run mariadb instance with existing database volume
+source ~/git/docker-dougbeal.com/.env
+export MYSQL_ROOT_PASSWORD=rootwordpress
+export MYSQL_DATABASE=${WORDPRESS_DATABASE_NAME} # init .sql files are loaded into it
+export MYSQL_USER=${WORDPRESS_DATABASE_USER}
+export MYSQL_PASSWORD=${WORDPRESS_DATABASE_PASSWORD}
+export MYSQL_TCP_PORT=${DATABASE_PORT}
+docker rm database && docker run --name=database -d -v database:/var/lib/mysql -e MYSQL_ROOT_PASSWORD -e MYSQL_DATABASE -e MYSQL_USER -e MYSQL_PASSWORD -e MYSQL_TCP_PORT  mariadb:5.5
+docker logs -f database
+
+
+
+CONTAINER=database ( docker stop ${CONTAINER} || true) && (docker rm ${CONTAINER} || true) && docker run --name=${CONTAINER} -d -v database:/var/lib/mysql -e MYSQL_ROOT_PASSWORD -e MYSQL_DATABASE -e MYSQL_USER -e MYSQL_PASSWORD -e MYSQL_TCP_PORT  -p ${MYSQL_TCP_PORT}:3306 mariadb:5.6 && docker logs -f ${CONTAINER}
+
+CONTAINER=madmin; docker stop ${CONTAINER}; docker rm ${CONTAINER}; docker run --name=${CONTAINER} --link database:db -e MYSQL_ROOT_PASSWORD -e MYSQL_DATABASE -e MYSQL_USER -e MYSQL_PASSWORD -e MYSQL_TCP_PORT  -p 8080:80 phpmyadmin/phpmyadmin && docker logs -f ${CONTAINER}
+
+ssh -L 13306:dougbeal.com:13306 dougbeal@dougbeal.com 
+ssh -L 13306:dougbeal.com:13306 -vvv dougbeal@dougbeal.com
+
+docker run --name=debug-database
+
+ssh -NL 13306:127.0.0.1:13306 -vvv dougbeal@dougbeal.com
+
+# verify number of recorsds to make sure they are all there
+for file in wordpress_com_dougbeal*sql; do echo $file; for table in $(egrep -oh 'wphk_[[:alpha:]]+' $file|sort|uniq); do echo "$table $(grep -o $table $file|wc)"; done;  done

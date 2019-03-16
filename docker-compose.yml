@@ -194,6 +194,6 @@ networks:
   frontend:
     driver: bridge
   debug:
-    driver: bridge
+    internal: true
   backend:
     internal: true
