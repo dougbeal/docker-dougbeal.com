@@ -2,7 +2,7 @@ git-update:
 	su dockerrun -c "git pull && git submodule update && git submodule foreach 'git pull || :'"
 
 wordpress-update-git:
-	su dockerrun -c "find volumes/wordpress_com_dougbeal_d/ -name .git -type d -print -execdir git pull \;"
+	su dockerrun -c "find volumes/wordpress_com_dougbeal_d/ -name .git -type d -print -execdir git pull; git submodule --recurisve udpate \;"
 
 wordpress-update-plugins: wordpress-update-git
 	docker exec docker-dougbealcom_wordpress_1 wp --allow-root plugin update --all
