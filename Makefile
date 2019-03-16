@@ -1,12 +1,12 @@
 define git_in_volume =
-	bash -c "DIR=${1}; (cd \"$DIR\" && git status) || (cd \"${DIR%/*}\" && git clone ${2} \"$DIR\")"
+	bash -c "DIR=${1}; (cd \"$DIR\" && git status) || (cd \"${DIR%/*}\" && git clone --recurse-submodules -j8 ${2} \"$DIR\")"
 endef
 
 update: git-update volumes-update-git wordpress-update-plugins
 
 
 git-update:
-	su dockerrun -c "git pull && git submodule update && git submodule foreach 'git pull || :'"
+	su dockerrun -c "git pull && git submodule --recursive update && git submodule foreach 'git pull || :'"
 
 volumes-update-git:
 	su dockerrun -c "find /home/dockerrun/docker-dougbeal.com/volumes/ -name .git -type d -print -execdir git pull \;"
