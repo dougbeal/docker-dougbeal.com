@@ -56,6 +56,8 @@ chown dock-www-data:dock-www-data ./volumes/org.foolscap.podcast/media/
 
 chown -R docksquash:docksquash ./volumes/org.foolscap.podcast/themes/*/assets/
 
+# git directeories are managed by dockerrun:dockerrun
+find /home/dockerrun/docker-dougbeal.com/volumes/ -name .git -type d -print -execdir chown dockerrun:dockerrun -R .git \;
 
 # database is writable by container mysql (uid 999) (mapped to uid 999+docksquash = 166535 on host)
 chown -R $(( $(id -u docksquash ) + 999 )):$(( $(id -g docksquash ) + 999 )) ./volumes/database/
