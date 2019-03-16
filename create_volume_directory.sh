@@ -20,6 +20,7 @@ mkdir -p volumes/openspace/cache/
 mkdir -p volumes/org.foolscap.podcast/public/
 mkdir -p volumes/org.foolscap.podcast/resources/
 mkdir -p volumes/org.foolscap.podcast/cache/
+mkdir -p volumes/org.foolscap.podcast/media/ # mount point
 
 mkdir -p volumes/org.foolscap.podcast_media/
 
@@ -50,6 +51,7 @@ chown -R docksquash:docksquash ./volumes/openspace/themes/*/assets/
 chown -R dock-www-data:dock-www-data ./volumes/org.foolscap.podcast/public/
 chown -R dock-www-data:dock-www-data ./volumes/org.foolscap.podcast/cache/
 chown -R dock-www-data:dock-www-data ./volumes/org.foolscap.podcast/resources/
+chown dock-www-data:dock-www-data ./volumes/org.foolscap.podcast/media/
 
 chown -R docksquash:docksquash ./volumes/org.foolscap.podcast/themes/*/assets/
 
