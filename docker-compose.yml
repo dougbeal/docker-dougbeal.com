@@ -8,8 +8,8 @@ services:
       - database:/var/lib/mysql
       - import-database:/docker-entrypoint-initdb.d:ro
     restart: on-failure
-    ports:
-      - "${DATABASE_PORT}:${DATABASE_PORT}"
+    expose:
+      - "${DATABASE_PORT}"
     environment:
       MYSQL_ROOT_PASSWORD: rootwordpress
       MYSQL_DATABASE: ${WORDPRESS_DATABASE_NAME} # init .sql files are loaded into it
@@ -28,8 +28,8 @@ services:
     links:
       - wordpress
     ports:
-      - 80:80
-      - 443:443
+      - "80:80"
+      - "443:443"
     restart: always
     volumes:
       # wait for v3.2 to be more widespread
@@ -75,8 +75,11 @@ services:
       WORDPRESS_DB_USER: ${WORDPRESS_DATABASE_USER}
       WORDPRESS_DB_PASSWORD: ${WORDPRESS_DATABASE_PASSWORD}
     networks:
+      - frontend # needs dns resolution
       - backend
       - debug
+    expose:
+      - "9000"
     command: "php-fpm"
 
   # together:
