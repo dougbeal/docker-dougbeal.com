@@ -11,6 +11,10 @@ git-update:
 volumes-update-git:
 	su dockerrun -c "find /home/dockerrun/docker-dougbeal.com/volumes/ -name .git -type d -print -execdir git pull \;"
 
+letsencrypt-regenerate: git-update
+	docker-compose -f docker-compose-letsencrypt.yml up --build
+	docker restart docker-dougbealcom_webserver-wordpress_1
+
 wordpress-update-plugins: wordpress-update-git
 	docker exec docker-dougbealcom_wordpress_1 wp --allow-root plugin update --all
 
@@ -58,5 +62,3 @@ volumes: $(VOLUMES)
 #volumes/wordpress_com_dougbeal_d/plugins/wiki-embed/.git
 #volumes/wordpress_com_dougbeal_d/plugins/micropub/.git
 #volumes/openspace/themes/hugo-theme-openspace/.git
-
-
