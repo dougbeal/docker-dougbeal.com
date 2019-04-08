@@ -6,7 +6,7 @@ update: git-update volumes-update-git wordpress-update-plugins
 
 
 git-update:
-	su dockerrun -c "git pull && git submodule --recursive update && git submodule foreach 'git pull || :'"
+	su dockerrun -c "git pull && git submodule update --recursive && git submodule foreach 'git pull || :'"
 
 volumes-update-git:
 	su dockerrun -c "find /home/dockerrun/docker-dougbeal.com/volumes/ -name .git -type d -print -execdir git pull \;"
