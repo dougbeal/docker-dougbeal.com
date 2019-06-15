@@ -7,7 +7,7 @@ services:
     volumes:
       - database:/var/lib/mysql
       - import-database:/docker-entrypoint-initdb.d:ro
-    restart: on-failure
+    restart: always
     expose:
       - "${DATABASE_PORT}"
     environment:
@@ -27,10 +27,11 @@ services:
       - wordpress
     links:
       - wordpress
+    restart: always      
     ports:
       - "80:80"
       - "443:443"
-    restart: always
+
     volumes:
       # wait for v3.2 to be more widespread
       # - type: volume
@@ -57,9 +58,10 @@ services:
       - backend
 
   wordpress:
+    build: wordpress
     depends_on:
       - database
-    build: wordpress
+    restart: always        
     volumes:
       - wordpress_com_dougbeal:${WORDPRESS_PATH}
       - wordpress_com_dougbeal-themes:${WORDPRESS_PATH}/wp-content/themes
