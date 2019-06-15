@@ -18,15 +18,21 @@ letsencrypt-regenerate: git-update
 wordpress-update-plugins: wordpress-update-git
 	docker exec docker-dougbealcom_wordpress_1 wp --allow-root plugin update --all
 
-
+wordpress-update: wordpress-update-plugins wordpress-update-core wordpress-update-theme
 
 wordpress-update-git:
-	su dockerrun -c "find volumes/wordpress_com_dougbeal_d/ -name .git -type d -print -execdir git pull; git submodule --recurisve udpate \;"
+	su dockerrun -c "find volumes/wordpress_com_dougbeal_d/ -name .git -type d -print -execdir git pull \;"
 
-wordpress-update-plugins: wordpress-update-git
-	docker exec docker-dougbealcom_wordpress_1 wp --allow-root plugin update --all
+wordpress-update-core: 
+	docker exec docker-dougbealcom_wordpress_1 wp --allow-root core update
 
+wordpress-update-theme: 
+	docker exec docker-dougbealcom_wordpress_1 wp --allow-root theme update --all
 
+wordpress-status:
+	docker exec docker-dougbealcom_wordpress_1 wp --allow-root core check-update
+	docker exec docker-dougbealcom_wordpress_1 wp --allow-root plugin status
+	docker exec docker-dougbealcom_wordpress_1 wp --allow-root theme status
 
 org-foolscap-podcast: org-foolscap-podcast-yarn org-foolscap-podcast-hugo
 
