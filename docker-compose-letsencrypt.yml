@@ -20,8 +20,9 @@ services:
       -d crow.moe -d crw.moe
       -d ek.dougbeal.com -d together.dougbeal.com -d www.crow.moe -d www.crw.moe
       -d foolscap.dougbeal.com -d svc.foolscap.org
-      -d open.foolscap.org -d form.foolscap.org -d form.foolscap.dougbeal.com -d open.foolscap.dougbeal.com
+      -d open.foolscap.org -d form.foolscap.org -d form.foolscap.dougbeal.com -d open.foolscap.dougbeal.com 
       -d podcast.foolscap.org -d podcast.foolscap.dougbeal.com
+      -d indieweb.dougbeal.com
 # -d indieping.me enable later
 #      --staging --debug-challenges      
 #      --agree-tos --non-interactive

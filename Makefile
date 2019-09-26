@@ -8,12 +8,11 @@ update: git-update volumes-update-git wordpress-update-plugins
 git-update:
 	su dockerrun -c "git pull && git submodule --recursive update && git submodule foreach 'git pull || :'"
 
+# git-ownership:
+# 	su dockerrun -c "find /home/dockerrun/docker-dougbeal.com/volumes/ -name .git -type d -print -execdir git pull \;"
+
 volumes-update-git:
 	su dockerrun -c "find /home/dockerrun/docker-dougbeal.com/volumes/ -name .git -type d -print -execdir git pull \;"
-
-wordpress-update-plugins: wordpress-update-git
-	docker exec docker-dougbealcom_wordpress_1 wp --allow-root plugin update --all
-
 
 
 org-foolscap-podcast: org-foolscap-podcast-yarn org-foolscap-podcast-hugo
