@@ -68,7 +68,7 @@ com-dougbeal-wp-plugins:
 com-dougbeal-wp-webserver:
 	docker-compose -f docker-compose.yml up --build --detach webserver-wordpress && docker restart docker-dougbealcom_webserver-wordpress_1
 
-VOLUMES = iw26 iw26-child org.foolscap.podcast
+VOLUMES = iw26 iw26-child org.foolscap.podcast com.dougbeal.hwc
 
 .PHONY: $(VOLUMES) volumes
 volumes: $(VOLUMES)

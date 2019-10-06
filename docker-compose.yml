@@ -27,7 +27,7 @@ services:
       - wordpress
     links:
       - wordpress
-    restart: always      
+    restart: always
     ports:
       - "80:80"
       - "443:443"
@@ -48,6 +48,7 @@ services:
       - hugo_org_foolscap_open:${WEBSERVER_ROOT}/hugo_org.foolscap.open/
       - org.foolscap.podcast:${WEBSERVER_ROOT}/org.foolscap.podcast/:ro
       - org.foolscap.podcast_media:${WEBSERVER_ROOT}/org.foolscap.podcast/media:ro
+      - com.dougeal.hwc:${WEBSERVER_ROOT}/com.dougbeal.hwc/:ro
     environment:
       NGINX_HOST: ${HOSTNAME}
       NGINX_PORT: 80
@@ -61,7 +62,7 @@ services:
     build: wordpress
     depends_on:
       - database
-    restart: always        
+    restart: always
     volumes:
       - wordpress_com_dougbeal:${WORDPRESS_PATH}
       - wordpress_com_dougbeal-themes:${WORDPRESS_PATH}/wp-content/themes
@@ -193,7 +194,12 @@ volumes:
       type: none
       device: ${PWD}/volumes/org.foolscap.podcast_media
       o: bind
-
+  com.dougbeal.hwc:
+    driver: local
+    driver_opts:
+      type: none
+      device: ${PWD}/volumes/com.dougbeal.hwc
+      o: bind
 
 networks:
   frontend:
