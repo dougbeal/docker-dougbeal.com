@@ -8,7 +8,7 @@ services:
       - well-known:/root/work/www/.well-known
       - letsencrypt:/root/work/letsencrypt
     command: >-
-      certonly --verbose --webroot --expand 
+      certonly --verbose --webroot --expand
       --agree-tos --non-interactive
       -m cert@dougbeal.com
       --webroot-path=/root/work/www
@@ -16,15 +16,16 @@ services:
       --logs-dir=/root
       --config-dir=/root/work/letsencrypt
       --cert-name=dougbeal.com
-      -d dougbeal.com -d u.dougbeal.com -d stage.dougbeal.com -d www.dougbeal.com 
+      -d dougbeal.com -d u.dougbeal.com -d stage.dougbeal.com -d www.dougbeal.com
       -d crow.moe -d crw.moe
       -d ek.dougbeal.com -d together.dougbeal.com -d www.crow.moe -d www.crw.moe
       -d foolscap.dougbeal.com -d svc.foolscap.org
       -d open.foolscap.org -d form.foolscap.org -d form.foolscap.dougbeal.com -d open.foolscap.dougbeal.com
       -d podcast.foolscap.org -d podcast.foolscap.dougbeal.com
-      -d xn--vh8h.dougbeal.com -d hwc.dougbeal.com
+      -d xn--vh8h.dougbeal.com -d hwc.dougbeal.com -d indieweb.dougbeal.com
+
 # -d indieping.me enable later
-#      --staging --debug-challenges      
+#      --staging --debug-challenges
 #      --agree-tos --non-interactive
 volumes:
   letsencrypt:
