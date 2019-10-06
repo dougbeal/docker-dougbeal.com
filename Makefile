@@ -50,10 +50,13 @@ org-foolscap-open: org-foolscap-open-yarn
 org-foolscap-open-yarn:
 	 docker-compose -f docker-compose.yml -f docker-compose-build.yml up --build   build-org-foolscap-open-yarn
 
-com-dougbeal-hwc: com-dougbeal-hwc-git com-dougbeal-hwc-yarn com-dougbeal-hwc-hugo 
+com-dougbeal-hwc: com-dougbeal-hwc-git-update com-dougbeal-hwc-yarn com-dougbeal-hwc-hugo 
 
-com-dougbeal-hwc-git:
-	su dockerrun -c "cd /home/dockerrun/docker-dougbeal.com/volumes/com.dougbeal.hwc && (git pull || git clone https://github.com/dougbeal/us.wa.seattle.indieweb.git)"
+com-dougbeal-hwc-git-init:
+	su dockerrun -c "cd /home/dockerrun/docker-dougbeal.com/volumes/com.dougbeal.hwc && git clone https://github.com/dougbeal/us.wa.seattle.indieweb.git"
+
+com-dougbeal-hwc-git-update:
+	su dockerrun -c "cd /home/dockerrun/docker-dougbeal.com/volumes/com.dougbeal.hwc && git pull"
 
 com-dougbeal-hwc-yarn:
 	 docker-compose -f docker-compose.yml -f docker-compose-build.yml up --build   build-com-dougbeal-hwc-yarn
