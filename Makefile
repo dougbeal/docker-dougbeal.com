@@ -50,6 +50,15 @@ org-foolscap-open: org-foolscap-open-yarn
 org-foolscap-open-yarn:
 	 docker-compose -f docker-compose.yml -f docker-compose-build.yml up --build   build-org-foolscap-open-yarn
 
+com-dougbeal-hwc: com-dougbeal-hwc-yarn com-dougbeal-hwc-hugo
+
+com-dougbeal-hwc-yarn:
+	 docker-compose -f docker-compose.yml -f docker-compose-build.yml up --build   build-com-dougbeal-hwc-yarn
+
+com-dougbeal-hwc-hugo:
+	 docker-compose -f docker-compose.yml -f docker-compose-build.yml up --build   build-com-dougbeal-hwc-hugo
+
+
 com-dougbeal-wp-plugins-git:
 	su dockerrun -c "find volumes/wordpress_com_dougbeal_d/ -name .git -type d -print -execdir git pull \;"
 

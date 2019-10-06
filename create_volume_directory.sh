@@ -24,6 +24,9 @@ mkdir -p volumes/org.foolscap.podcast/media/ # mount point
 
 mkdir -p volumes/org.foolscap.podcast_media/
 
+mkdir -p volumes/com.dougbeal.hdc/public/
+mkdir -p volumes/com.dougbeal.hdc/resources/
+mkdir -p volumes/com.dougbeal.hdc/cache/
 
 
 # general volumes owner is docksquash:docksquash
@@ -53,6 +56,11 @@ chown -R dock-www-data:dock-www-data ./volumes/org.foolscap.podcast/public/
 chown -R dock-www-data:dock-www-data ./volumes/org.foolscap.podcast/cache/
 chown -R dock-www-data:dock-www-data ./volumes/org.foolscap.podcast/resources/
 chown dock-www-data:dock-www-data ./volumes/org.foolscap.podcast/media/
+
+chown -R docksquash:docksquash ./volumes/com.dougbeal.hdc/
+chown -R dock-www-data:dock-www-data ./volumes/com.dougbeal.hdc/public/
+chown -R dock-www-data:dock-www-data ./volumes/com.dougbeal.hdc/cache/
+chown -R dock-www-data:dock-www-data ./volumes/com.dougbeal.hdc/resources/
 
 chown -R docksquash:docksquash ./volumes/org.foolscap.podcast/themes/*/assets/
 
