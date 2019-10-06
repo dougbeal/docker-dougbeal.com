@@ -6,27 +6,36 @@ services:
     volumes:
       - org.foolscap.podcast:/build/
       - org.foolscap.podcast_media:/build/media/
+    networks:
+      - frontend
 
   build-org-foolscap-podcast-hugo:
     build: build/hugo
     volumes:
       - org.foolscap.podcast:/build/
       - org.foolscap.podcast_media:/build/media/
+    networks:
+      - frontend      
 
   build-org-foolscap-open-yarn:
     build: build/yarn
     volumes:
       - hugo_org_foolscap_open:/build/
-
+    networks:
+      - frontend
+      
   build-com-dougbeal-hwc-yarn:
     build: build/yarn
     volumes:
       - com.dougbeal.hwc:/build/
-
+    networks:
+      - frontend
+      
   build-com-dougbeal-hwc-hugo:
     build: build/hugo
     volumes:
       - com.dougbeal.hwc:/build/
-
+    networks:
+      - frontend
  
  
