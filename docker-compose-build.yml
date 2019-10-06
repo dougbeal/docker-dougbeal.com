@@ -17,5 +17,16 @@ services:
     build: build/yarn
     volumes:
       - hugo_org_foolscap_open:/build/
+
+  build-com-dougbeal-hwc-yarn:
+    build: build/yarn
+    volumes:
+      - com.dougbeal.hwc:/build/
+
+  build-com-dougbeal-hwc-hugo:
+    build: build/hugo
+    volumes:
+      - com.dougbeal.hwc:/build/
+
  
  
