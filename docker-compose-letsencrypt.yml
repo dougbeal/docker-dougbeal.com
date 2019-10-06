@@ -22,7 +22,7 @@ services:
       -d foolscap.dougbeal.com -d svc.foolscap.org
       -d open.foolscap.org -d form.foolscap.org -d form.foolscap.dougbeal.com -d open.foolscap.dougbeal.com
       -d podcast.foolscap.org -d podcast.foolscap.dougbeal.com
-      -d xn--vh8h.dougbeal.com -d hwc.dougbeal.com -d indieweb.dougbeal.com
+      -d hwc.dougbeal.com -d indieweb.dougbeal.com
 
 # -d indieping.me enable later
 #      --staging --debug-challenges
