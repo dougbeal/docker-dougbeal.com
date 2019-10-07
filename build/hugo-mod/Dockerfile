@@ -5,7 +5,7 @@ RUN wget -O- https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}
 FROM golang:1.13 as goenv
 
 FROM gcr.io/distroless/cc
-COPY --from=goenv /usr/bin/go /usr/bin/go
+COPY --from=goenv /usr/local/go/bin/go /usr/local/go/bin/go
 COPY --from=dl-env /hugo /
 WORKDIR "/build"
 
