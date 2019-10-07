@@ -32,7 +32,7 @@ services:
       - frontend
       
   build-com-dougbeal-hwc-hugo:
-    build: build/hugo
+    build: build/hugo-mod
     volumes:
       - com.dougbeal.hwc:/build/
     networks:
