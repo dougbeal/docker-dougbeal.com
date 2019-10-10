@@ -1,0 +1,3 @@
+#!/bin/sh
+/hugo mod get -v -u ...
+/hugo --debug --verbose --cacheDir /build/cache --verboseLog --log --logFile /dev/stdout
