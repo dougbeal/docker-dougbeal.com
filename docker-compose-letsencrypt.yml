@@ -25,6 +25,7 @@ services:
       -d hwc.dougbeal.com -d indieweb.dougbeal.com
       -d xn--vh8h.dougbeal.com
       -d beal.dev
+      -d webhook.foolscap.org
 
 # -d indieping.me enable later
 #      --staging --debug-challenges
